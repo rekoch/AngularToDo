@@ -1,0 +1,8 @@
+{
+  "todos": [
+    { "name": "lernen", "status": "open" },
+    { "name": "bügeln", "status": "open" },
+    { "name": "aufräumen", "status": "open" },
+    { "name": "bewerben", "status": "open" }
+  ]
+}
