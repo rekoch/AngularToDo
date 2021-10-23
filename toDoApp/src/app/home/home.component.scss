@@ -1,0 +1,37 @@
+h1 {
+  font-family: sans-serif;
+  color: #ff9900;
+}
+
+.frame {
+  margin: 20px;
+}
+
+.toDos {
+  color: mediumblue;
+  font-family: sans-serif;
+  background-color: moccasin;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 0px;
+  margin-top: 15px;
+  border-radius: 13px;
+}
+
+.toDo {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  background-color: mediumslateblue;
+  border-radius: 10px;
+  border: 4px;
+  padding: 14px;
+  color: navajowhite;
+}
+
+.width-1 {
+  width: 300px;
+}
