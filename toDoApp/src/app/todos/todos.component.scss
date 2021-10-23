@@ -19,6 +19,10 @@ h1 {
   border-radius: 13px;
 }
 
+/**
+das SCSS, welches die neue Child-Component "todo" betrifft, soll dorthin verschoben werden.
+Also die Klassen .toDo, button und .width-1 hier löschen und im todo.component.scss schreiben.
+**/
 .toDo {
   display: flex;
   align-items: center;

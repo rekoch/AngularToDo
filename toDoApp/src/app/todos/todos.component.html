@@ -1,0 +1,14 @@
+<div class="frame">
+  <h1>Meine ToDo's</h1>
+  <div class="toDos" *ngFor="let todo of toDo">
+    <!-- das ganze HTML, welches zwischen Zeilen 4 und 9 liegt, soll in die neue Component "Todo"  -->
+    <div class="toDo">
+      <div class="width-1">{{ todo.name }}</div>
+      <button (click)="buttonClick()">erledigt</button>
+    </div>
+  </div>
+  <!-- am Schluss wenn du alles verschoben hast, kannst du hier nur noch die child-Component nutzen. Daher <app-todo> -->
+  <!-- sobald das Input() im todo.component.ts definiert ist kannst du hier ein ToDo übergeben. Bspw.
+    <app-todo [todo]=todo>
+  -->
+</div>

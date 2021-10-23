@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ToDo } from '../models/todo';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class TodosComponent implements OnInit {
   toDo: ToDo[] = [
     { name: 'Geschenk verpacken', status: 'open' },
     { name: 'Angular Hausaufgaben erledigen', status: 'open' },
@@ -18,10 +18,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {}
 
+  // buttonClick() in die Child-Component verschieben. Daher nach todo.component.ts
   buttonClick() {
     console.log(this.buttonClick);
   }
 }
-
-// hier schreiben wir später das Interface "ToDo" -> kannst du auch bereits versuchen.
-// bspw. "export interface Bird {"name": string}"
