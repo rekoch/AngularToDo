@@ -1,2 +1,5 @@
-<!-- hier kommte das HTML rein, welches zuvor im "todos.component.html" war -->
-<p>todo works!</p>
+<div class="toDo">
+  <div class="width-1">{{ todo.name }}</div>
+  <button (click)="handleTodoClick()">erledigt</button>
+  <div class="padding-left-1">{{ todo.status }}</div>
+</div>

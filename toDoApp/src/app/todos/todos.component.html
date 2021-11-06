@@ -1,14 +1,16 @@
 <div class="frame">
   <h1>Meine ToDo's</h1>
   <div class="toDos" *ngFor="let todo of toDo">
-    <!-- das ganze HTML, welches zwischen Zeilen 4 und 9 liegt, soll in die neue Component "Todo"  -->
-    <div class="toDo">
-      <div class="width-1">{{ todo.name }}</div>
-      <button (click)="buttonClick()">erledigt</button>
-    </div>
+    <!-- Sobald das @Output im Todo definiert ist, kannst du es hier angeben.
+      Die Syntax ist ähnlich wie beim @Input, jedoch mit runden Klammern.
+      Bspw. <app-todo (todoClicked)
+      Mit dem darauffolgenden = Zeichen geben wir an, was passieren soll, wenn dies geklickt wurde.
+      Also bspw. <app-todo (todoClicked)="handleTodoClicked()"
+    -->
+    <!-- Damit die Methode handleTodoClicked() weiss, welches Todo zu bearbeiten ist, muss es der Methode
+      mitgegeben werden. Also bspw. <app-todo (todoClicked)="handleTodoClicked(todo)"
+      Die Methode im todos.component.ts muss entsprechend mit diesem neuen Parameter erweitert werden.
+    -->
+    <app-todo [todo]="todo"></app-todo>
   </div>
-  <!-- am Schluss wenn du alles verschoben hast, kannst du hier nur noch die child-Component nutzen. Daher <app-todo> -->
-  <!-- sobald das Input() im todo.component.ts definiert ist kannst du hier ein ToDo übergeben. Bspw.
-    <app-todo [todo]=todo>
-  -->
 </div>

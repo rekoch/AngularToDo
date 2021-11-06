@@ -18,8 +18,12 @@ export class TodosComponent implements OnInit {
 
   ngOnInit() {}
 
-  // buttonClick() in die Child-Component verschieben. Daher nach todo.component.ts
-  buttonClick() {
-    console.log(this.buttonClick);
-  }
+  // Neue Methode schreiben, die verwendet wird, wenn der Button der ToDo (Child-Component) geklickt wurde.
+  // Nach Beispiel im todos.component.html (siehe Kommentar), wäre dies bspw. handleTodoClicked()
+  // Die Methode soll nach einem Click den Status eines ToDos von "open" auf "erledigt" ändern.
+
+  // Die Methode übernimmt das "Todo" aus dem todos.component.html, um den Status auf "erledigt" zu ändern.
+  // handleTodoClicked(todo: Todo)
+  // danach kann die Methode auf das todo zugreifen und den Wert anpassen.
+  // todo.status = 'erledigt'
 }
