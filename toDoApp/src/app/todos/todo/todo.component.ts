@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from 'src/app/models/todo';
 
 @Component({
@@ -8,16 +8,21 @@ import { ToDo } from 'src/app/models/todo';
 })
 export class TodoComponent implements OnInit {
   @Input() todo!: ToDo;
-  // Der Button Klick soll als Output an die Todos Component übergeben werden. Daher, die ToDos Component übernimmt die Aufgabe, was nach einem Klick
-  // auf den Button geschieht.
-  // Definiere ein @Output() -> https://angular.io/guide/inputs-outputs#sending-data-to-a-parent-component
-  // handleTodoClick nutzt den @Output, um der Parent-Component (ToDos) die Aktion mitzuteilen
+  @Output() toDoClicked = new EventEmitter<null>();
+  buttonActionText: 'erledigt' | 'löschen' = 'erledigt';
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.todo?.status === 'open') {
+      this.buttonActionText = 'erledigt';
+    } else {
+      this.buttonActionText = 'löschen';
+    }
+  }
 
   handleTodoClick() {
     console.log('button wurde geklickt');
+    this.toDoClicked.emit();
   }
 }
