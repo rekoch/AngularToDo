@@ -1,16 +1,29 @@
 <div class="frame">
   <h1>Meine ToDo's</h1>
-  <div class="toDos" *ngFor="let todo of toDo">
-    <!-- Sobald das @Output im Todo definiert ist, kannst du es hier angeben.
-      Die Syntax ist ähnlich wie beim @Input, jedoch mit runden Klammern.
-      Bspw. <app-todo (todoClicked)
-      Mit dem darauffolgenden = Zeichen geben wir an, was passieren soll, wenn dies geklickt wurde.
-      Also bspw. <app-todo (todoClicked)="handleTodoClicked()"
-    -->
-    <!-- Damit die Methode handleTodoClicked() weiss, welches Todo zu bearbeiten ist, muss es der Methode
-      mitgegeben werden. Also bspw. <app-todo (todoClicked)="handleTodoClicked(todo)"
-      Die Methode im todos.component.ts muss entsprechend mit diesem neuen Parameter erweitert werden.
-    -->
-    <app-todo [todo]="todo"></app-todo>
+  <div class="switchState">
+    <h2>zeige:</h2>
+    <button (click)="switchState()">{{ buttonFilterText }}</button>
+  </div>
+  <div class="toDos" *ngFor="let todo of todos">
+    <app-todo (toDoClicked)="handleTodoClicked(todo)" [todo]="todo"></app-todo>
   </div>
 </div>
+
+<!-- hier wollen wir die Möglichkeit haben, ein komplett neues toDo zu machen-->
+<!-- erstelle dafür eine komplett neue Component. nenn sie bspw. "createTodo"-->
+<!-- wenn die Component erstellt ist, dann musst du hier nur noch die Component einbinden-->
+<!-- also bspw. "<app-createtodo></app-createtodo>"-->
+
+<!-- Informationen zur neuen Child Component
+
+-- nenne sie bspw. "createTodo"
+-- nutze die Formular Logik von Angular
+-- nutze "template driven formular"
+-- siehe Anleitung auf angular.io - - - -> https://angular.io/guide/forms#building-a-template-driven-form
+-- Anstelle der Beispiel Formular-Daten müssen wir natürlich am Schluss ein neues todo haben.
+-- Wir benötigen daher eigentlich nur den "namen" des ToDos
+-- Den Status "open" kann automatisch bei einem neuen ToDo gesetzt werden
+-- wenn das Todo erstellt wird (bspw. mit einem Button "save"), muss das neue Todo über ein @Output übergeben werden
+-- sobald das todo als Output verfügbar ist, kann es in dieser todos.component.ts der originalToDos hinzugefügt werden
+-- achte darauf, dass nach dem Hinzufügen die Methode "filterTodos()" angesprochen wird, damit die liste der todos neu gefüllt wird
+-->
