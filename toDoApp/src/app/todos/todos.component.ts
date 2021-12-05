@@ -30,13 +30,19 @@ export class TodosComponent implements OnInit {
   }
 
   handleTodoClicked(todo: ToDo) {
-    // mehr logik :)
-    // wenn der Status des Todo bereits auf 'done' ist, dann wollen wir genau dieses aus der originalToDos löschen
-    // löschen mit splice https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-    // zum finden des index nutze indexOf https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
-    todo.status = 'done';
+    const indexOfTodo = this.originalToDos.indexOf(todo);
+    if (todo.status === 'done') {
+      this.originalToDos.splice(indexOfTodo, 1);
+    } else {
+      todo.status = 'done';
+      this.originalToDos[indexOfTodo].status = todo.status;
+    }
     this.filterTodos();
   }
+
+  // neue Methode handleTodoChanged()
+  // füge das neue ToDo am Einfachsten der "OriginalList" hinzu
+  // danach musst du nur noch die filterTodos Methode aufrufen
 
   filterTodos() {
     this.todos = this.originalToDos.filter(

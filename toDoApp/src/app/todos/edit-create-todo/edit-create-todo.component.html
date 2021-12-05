@@ -1,0 +1,13 @@
+<h2>New ToDo</h2>
+<form (submit)="todoChanged()">
+  <div>
+    Name:
+    <input
+      placeholder="name of todo"
+      type="text"
+      name="name"
+      [(ngModel)]="todo.name"
+    />
+    <button type="submit">save</button>
+  </div>
+</form>
