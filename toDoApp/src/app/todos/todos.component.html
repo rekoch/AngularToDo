@@ -1,16 +1,18 @@
 <div class="frame">
   <h1>Meine ToDo's</h1>
-  <app-edit-create-todo></app-edit-create-todo>
-  <!-- <app-edit-create-todo> soll nun auf den Output reagieren
-        bspw. <app-edit-create-todo (todoChanged)="handleChangedTodo($event)">
-        Erstelle am Besten eine entsprechende Methode im .ts File
-        nenne sie bspw. "handleChangedTodo(todo: Todo)"
-    -->
+  <app-edit-create-todo
+    (todoChanged)="handleChangedTodo($event)"
+  ></app-edit-create-todo>
   <div class="switchState">
     <h2>zeige:</h2>
     <button (click)="switchState()">{{ buttonFilterText }}</button>
   </div>
   <div class="toDos" *ngFor="let todo of todos">
     <app-todo (toDoClicked)="handleTodoClicked(todo)" [todo]="todo"></app-todo>
-  </div>
+    <!-- an dieser Stelle nutzen wir nun zusätzlich unsere "app-edit-create-todo" component.
+    Damit der Unterschied zwischen "edit" und "neu" klappt, benötigt die Component "app-edit-create-todo"
+    noch die Variante. So kann auch das UI angepasst werden.
+    Zusätzlich macht es Sinn, den Status "edit" zu steuern und mit einem *ngIf nur dann die "app-edit-create-todo"
+    einzublenden, wenn der User tatsächlich am Editieren ist.
+  --></div>
 </div>

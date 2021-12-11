@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDo } from 'src/app/models/todo';
 
 @Component({
@@ -8,16 +8,16 @@ import { ToDo } from 'src/app/models/todo';
 })
 export class EditCreateTodoComponent implements OnInit {
   @Input() todo: ToDo = { name: '', status: 'open' };
-  // hier ein neues @Output() erstellen
-  // wenn 'todoChanged' ausgeführt wird, muss mittels @Output das angepasste ToDo übermittelt werden
-  // verwende dazu emit() des EventEmitter
+  // als Input nimmst du noch die Varianten 'edit' bzw. 'neu' entgegen.
+  // so kannst du das UI anpassen und korrekt auf die Variante reagieren
+  @Output() todoChanged = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
 
-  todoChanged() {
-    // hier so umbauen dass das Output verwendet wird
-    console.log(this.todo.name);
+  todoEdited(form: HTMLFormElement) {
+    this.todoChanged.emit(this.todo);
+    form.reset();
   }
 }

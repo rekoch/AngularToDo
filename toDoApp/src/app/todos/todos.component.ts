@@ -40,9 +40,19 @@ export class TodosComponent implements OnInit {
     this.filterTodos();
   }
 
-  // neue Methode handleTodoChanged()
-  // füge das neue ToDo am Einfachsten der "OriginalList" hinzu
-  // danach musst du nur noch die filterTodos Methode aufrufen
+  handleChangedTodo(changedTodo: ToDo) {
+    const indexOfChangedTodo = this.originalToDos.indexOf(changedTodo);
+    if (indexOfChangedTodo >= 0) {
+      // diese Logik produziert Fehler, da die Objekte verbunden bleiben.
+      // this.originalToDos[indexOfChangedTodo] = changedTodo;
+      // Korrektur mit spread Operator = Kopie des Objektes
+      this.originalToDos[indexOfChangedTodo] = { ...changedTodo };
+    } else {
+      // this.originalToDos.push(changedTodo);
+      this.originalToDos.push({ ...changedTodo });
+    }
+    this.filterTodos();
+  }
 
   filterTodos() {
     this.todos = this.originalToDos.filter(

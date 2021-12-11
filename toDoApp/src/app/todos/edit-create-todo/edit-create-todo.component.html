@@ -1,5 +1,5 @@
 <h2>New ToDo</h2>
-<form (submit)="todoChanged()">
+<form #editForm (submit)="todoEdited(editForm)">
   <div>
     Name:
     <input
